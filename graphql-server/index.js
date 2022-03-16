@@ -49,7 +49,7 @@ const fetchPosts = () => {
  */
 const batchGetUserById = async (ids) => {
   console.log("Called once per tick:", ids);
-  // Look up each user-
+  // Look up each user in the "database".
   return ids.map((id) => users.find((user) => user.id === id));
 };
 const usersLoader = new DataLoader(batchGetUserById);
