@@ -1,0 +1,21 @@
+{
+  "name": "graphql-federation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "gateway": "node index.js",
+    "users": "node subgraph-users.js",
+    "reviews": "node subgraph-reviews.js",
+    "products": "node subgraph-products.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/gateway": "2.0.0-preview.7",
+    "@apollo/subgraph": "2.0.0-preview.7",
+    "apollo-server": "3.6.4",
+    "graphql": "16.3.0"
+  }
+}

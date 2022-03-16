@@ -1,0 +1,15 @@
+extend schema
+    @link(url: "https://specs.apollo.dev/federation/v2.0",
+       import: ["@key", "@shareable", "@tag"])
+
+
+# Users subgraph
+type User @key(fields: "id") @shareable {
+  id: ID!
+  name: String
+}
+
+type Query @shareable {
+  users: [User!]!
+  user(id: ID!): User!
+}

@@ -1,0 +1,91 @@
+schema
+  @core(feature: "https://specs.apollo.dev/core/v0.2")
+  @core(feature: "https://specs.apollo.dev/join/v0.2", for: EXECUTION) {
+  query: Query
+}
+
+directive @core(
+  feature: String!
+  as: String
+  for: core__Purpose
+) repeatable on SCHEMA
+
+directive @join__field(
+  graph: join__Graph!
+  requires: join__FieldSet
+  provides: join__FieldSet
+  type: String
+  external: Boolean
+) repeatable on FIELD_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @join__graph(name: String!, url: String!) on ENUM_VALUE
+
+directive @join__implements(
+  graph: join__Graph!
+  interface: String!
+) repeatable on OBJECT | INTERFACE
+
+directive @join__type(
+  graph: join__Graph!
+  key: join__FieldSet
+  extension: Boolean! = false
+  resolvable: Boolean! = true
+) repeatable on OBJECT | INTERFACE | UNION | ENUM | INPUT_OBJECT | SCALAR
+
+enum core__Purpose {
+  """
+  `SECURITY` features provide metadata necessary to securely resolve fields.
+  """
+  SECURITY
+
+  """
+  `EXECUTION` features provide metadata necessary for operation execution.
+  """
+  EXECUTION
+}
+
+scalar join__FieldSet
+
+enum join__Graph {
+  PRODUCTS @join__graph(name: "products", url: "http://localhost:4003")
+  REVIEWS @join__graph(name: "reviews", url: "http://localhost:4002")
+  USERS @join__graph(name: "users", url: "http://localhost:4001")
+}
+
+type Product
+  @join__type(graph: PRODUCTS, key: "id")
+  @join__type(graph: REVIEWS, key: "id")
+  @join__type(graph: USERS, key: "id") {
+  id: ID!
+  name: String @join__field(graph: PRODUCTS)
+  price: String @join__field(graph: PRODUCTS)
+  reviews: [Review] @join__field(graph: REVIEWS)
+}
+
+type Query
+  @join__type(graph: PRODUCTS)
+  @join__type(graph: REVIEWS)
+  @join__type(graph: USERS) {
+  products: [Product!]! @join__field(graph: PRODUCTS)
+  product(id: ID!): Product! @join__field(graph: PRODUCTS)
+  user(id: ID!): User! @join__field(graph: USERS)
+  users: [User!]! @join__field(graph: USERS)
+}
+
+type Review
+  @join__type(graph: REVIEWS, key: "id")
+  @join__type(graph: USERS, key: "id") {
+  id: ID!
+  body: String
+  author: User
+  product: Product
+}
+
+type User
+  @join__type(graph: PRODUCTS, key: "id")
+  @join__type(graph: REVIEWS, key: "id")
+  @join__type(graph: USERS, key: "id") {
+  id: ID!
+  purchases: [Product] @join__field(graph: PRODUCTS)
+  reviews: [Review] @join__field(graph: REVIEWS)
+}
