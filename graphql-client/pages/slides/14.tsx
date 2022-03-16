@@ -28,7 +28,7 @@ const Page: NextPage = () => {
 
       <footer className={styles.footer}>
         <a href="/slides/13">👈</a> written by tehnix / codetalk.io{" "}
-        <a href="/slides/14">🤗</a>
+        <a href="/slides/15">👉</a>
       </footer>
     </div>
   );

@@ -1,26 +1,11 @@
 const { ApolloServer, gql } = require("apollo-server");
 const DataLoader = require("dataloader");
+const { readFileSync } = require("fs");
 
 /**
- * Define our schema inline.
+ * Load our schema definition from file.
  */
-const typeDefs = gql`
-  type Post {
-    id: ID!
-    title: String!
-    description: String
-    author: User!
-  }
-
-  type User {
-    id: ID!
-    name: String!
-  }
-
-  type Query {
-    posts: [Post!]!
-  }
-`;
+const typeDefs = gql(readFileSync("./schema.graphql").toString("utf-8"));
 
 /**
  * Simple static database of users.

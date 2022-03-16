@@ -17,4 +17,23 @@ extend type Query {
 type Organization {
   organizationId: ID! @fake(type: uuid)
   title: String @fake(type: companyName)
+  createdAt: String @fake(type: pastDate)
 }
+
+
+extend type Login {
+	pets: [Pet!]!
+}
+
+type Pet {
+  id: ID! @fake(type: uuid)
+  type: PetType!
+}
+
+enum PetType {
+	CAT
+  DOG
+  GOLDFISH
+  SNAIL
+}
+

@@ -1,0 +1,29 @@
+{
+  "name": "playground-graphql",
+  "version": "1.0.0",
+  "description": "Playground to play around with and show GraphQL usage.",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm:g*\"",
+    "g:client": "cd graphql-client && npm run dev",
+    "g:server": "cd graphql-server && npm run dev",
+    "g:users-subgraph": "cd graphql-federation && npm run users",
+    "g:reviews-subgraph": "cd graphql-federation && npm run reviews",
+    "g:products-subgraph": "cd graphql-federation && npm run products",
+    "g:gateway": "cd graphql-federation && npm run gateway"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tehnix/playground-graphql.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tehnix/playground-graphql/issues"
+  },
+  "homepage": "https://github.com/Tehnix/playground-graphql#readme",
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  }
+}
