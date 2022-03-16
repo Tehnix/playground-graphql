@@ -27,8 +27,8 @@ const Page: NextPage = () => {
       </main>
 
       <footer className={styles.footer}>
-        <a href="/slides/2">👈</a> written by tehnix / codetalk.io{" "}
-        <a href="/slides/4-dataloaders">👉</a>
+        <a href="/slides/13">👈</a> written by tehnix / codetalk.io{" "}
+        <a href="/slides/14">🤗</a>
       </footer>
     </div>
   );

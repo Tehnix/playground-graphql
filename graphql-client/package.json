@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "mock": "graphql-faker ./mock-schema.graphql --extend http://app.famly.local/graphql --header \"X-Famly-Accesstoken: $API_TOKEN\""
   },
   "dependencies": {
     "next": "12.1.0",
@@ -18,6 +19,7 @@
     "@types/react": "17.0.40",
     "eslint": "8.11.0",
     "eslint-config-next": "12.1.0",
+    "graphql-faker": "^2.0.0-rc.25",
     "typescript": "4.6.2"
   }
 }
