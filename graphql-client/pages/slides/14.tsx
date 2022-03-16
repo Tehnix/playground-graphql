@@ -23,6 +23,8 @@ const Page: NextPage = () => {
           <br />
           <br />- Caching methods in the GraphQL Client: cache-first,
           cache-only, network-only, no-cache, cache-and-network
+          <br />
+          <br />- Deduplication
         </div>
       </main>
 

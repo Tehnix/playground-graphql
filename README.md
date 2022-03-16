@@ -42,3 +42,4 @@ $ rover fed2 supergraph compose --config ./supergraph-config.yaml > supergraph.g
 - https://www.apollographql.com/docs/router/quickstart
 - https://xuorig.medium.com/the-graphql-dataloader-pattern-visualized-3064a00f319f
 - https://www.apollographql.com/docs/react/data/queries/#supported-fetch-policies
+- https://github.com/gajus/graphql-deduplicator
