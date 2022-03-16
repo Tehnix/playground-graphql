@@ -33,6 +33,13 @@ After making adjustments to the subgraphs, we need to update the supergraph usin
 $ rover fed2 supergraph compose --config ./supergraph-config.yaml > supergraph.graphql
 ```
 
+## To Do
+
+- [ ] Get Federation fully working (switch back to Federation v1 maybe?)
+- [ ] Add examples of Batched HTTP requests by not triggering `queryDeduplication` (e.g. just different arguments)
+- [ ] Add example using [graphql-deduplicator](https://github.com/gajus/graphql-deduplicator)
+- [ ] Showcase different `fetchPolicy`'s for caching strategies by having buttons that trigger queries and showing which actually result in a network request
+
 
 ## Resources
 
